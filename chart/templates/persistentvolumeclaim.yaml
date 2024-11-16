@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ include "chart.fullname" . }}-state
+  name: {{ include "cti-rss-teams-bot.fullname" . }}-state
 spec:
   accessModes:
     - ReadWriteOnce
