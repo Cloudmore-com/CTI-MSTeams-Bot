@@ -33,7 +33,7 @@ spec:
               - name: {{ $key }}
                 valueFrom:
                   secretKeyRef:
-                    name: {{ include "cti-rss-teams-bot.fullname" . }}-secret
+                    name: {{ include "cti-rss-teams-bot.fullname" $ }}-secret
                     key: {{ $key }}
               {{- end }}
               - name: CONFIG_FILE_PATH
