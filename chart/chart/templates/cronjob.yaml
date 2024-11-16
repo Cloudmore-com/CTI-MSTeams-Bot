@@ -1,0 +1,69 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "chart.fullname" . }}
+spec:
+  schedule: {{ .Values.schedule }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          initContainers:
+            - name: init-config
+              image: busybox
+              command: ["sh", "-c"]
+              args:
+                - |
+                  if [ ! -f /mnt/data/Config.txt ]; then
+                    cp /app/Config.txt /mnt/data/Config.txt &&
+                    chmod 644 /mnt/data/Config.txt;
+                  fi
+              volumeMounts:
+                - name: config
+                  mountPath: /app/Config.txt
+                  subPath: Config.txt
+                - name: state
+                  mountPath: /mnt/data
+          containers:
+            - name: {{ .Chart.Name }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              args: ["TeamsIntelBot.py", "-r", "-d"]
+              env:
+              {{- range $key, $_ := .Values.secrets }}
+              - name: {{ $key }}
+                valueFrom:
+                  secretKeyRef:
+                    name: {{ include "chart.fullname" . }}-secret
+                    key: {{ $key }}
+              {{- end }}
+              - name: CONFIG_FILE_PATH
+                value: "/mnt/data"
+              volumeMounts:
+                - name: config
+                  mountPath: /app/Feed.csv
+                  subPath: Feed.csv
+                - name: config
+                  mountPath: /app/Config.txt
+                  subPath: Config.txt
+                - name: state
+                  mountPath: /mnt/data
+          volumes:
+            - name: config
+              configMap:
+                name: {{ include "chart.fullname" . }}-config
+            - name: state
+              persistentVolumeClaim:
+                claimName: {{ include "chart.fullname" . }}-state
+          restartPolicy: OnFailure
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 8 }}
+          {{- end }}
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 8 }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 8 }}
+          {{- end }}

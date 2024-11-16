@@ -1,0 +1,377 @@
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+image:
+  repository: copinfra.azurecr.io/devops/cti-rss-teams-bot
+
+
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+schedule: "0 10 * * *"
+config:
+  Feed.csv: |
+    https://grahamcluley.com/feed/,Graham Cluley
+    https://threatpost.com/feed/,Threatpost
+    https://krebsonsecurity.com/feed/,Krebs on Security
+    https://www.darkreading.com/rss.xml,Dark Reading
+    https://davinciforensics.co.za/cybersecurity/feed/,DaVinci Forensics
+    https://blogs.cisco.com/security/feed,Cisco
+    https://www.infosecurity-magazine.com/rss/news/,Information Security Magazine
+    https://blog.google/threat-analysis-group/rss/,Google TAG
+    http://feeds.trendmicro.com/TrendMicroResearch,Trend Micro
+    https://www.bleepingcomputer.com/feed/,Bleeping Computer
+    https://www.proofpoint.com/us/rss.xml,Proof Point
+    http://feeds.feedburner.com/TheHackersNews?format=xml,Hacker News
+    https://www.schneier.com/feed/atom/,Schneier on Security
+    https://www.binarydefense.com/feed/,Binary Defense
+    https://securelist.com/feed/,Securelist
+    https://research.checkpoint.com/feed/,Checkpoint Research
+    https://www.virusbulletin.com/rss,VirusBulletin
+    https://modexp.wordpress.com/feed/,Modexp
+    https://www.tiraniddo.dev/feeds/posts/default,James Forshaw
+    https://blog.xpnsec.com/rss.xml,Adam Chester
+    https://msrc-blog.microsoft.com/feed/,Microsoft Security
+    https://www.recordedfuture.com/feed,Recorded Future
+    https://www.sentinelone.com/feed/,SentinelOne
+    https://redcanary.com/feed/,RedCanary
+    https://cyber-news.fr/feed/atom?,Cyber-News
+    https://leak-lookup.com/rss,Leak-Lookup
+    https://cybersecurity.att.com/site/blog-all-rss,ATT
+    https://www.cisa.gov/uscert/ncas/alerts.xml,US-CERT CISA
+    https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml,NCSC
+    https://www.cisecurity.org/feed/advisories,Center of Internet Security
+    https://cert.ssi.gouv.fr/alerte/feed/,FR-CERT Alertes
+    https://cert.ssi.gouv.fr/avis/feed/,FR-CERT Avis
+    https://www.enisa.europa.eu/publications/RSS,EU-ENISA Publications
+    https://techcommunity.microsoft.com/plugins/custom/microsoft/o365/custom-blog-rss?tid=8149516204242144484&board=MicrosoftSentinelBlog&size=25,Microsoft Sentinel
+    https://research.nccgroup.com/category/threat-intelligence/feed/,NCC
+    https://isc.sans.edu/rssfeed.xml,SANS
+    https://www.databreaches.net/feed/,DataBreaches
+    https://unit42.paloaltonetworks.com/feed/,Unit42
+    https://api.msrc.microsoft.com/update-guide/rss,MSRC Security Update
+    https://azure.status.microsoft/en-us/status/feed/,Azure Status
+    https://www.ria.ee/en/rss-feeds/rss.xml,Estonia ria
+  Config.txt: |
+    [Rss]
+    graham cluley = 2024-08-14T16:00:01
+    threatpost = 2022-08-31T12:57:48
+    krebs on security = 2024-08-15T22:38:36
+    dark reading = 2027-03-26T22:00:00
+    we live security = 2023-07-19T09:30:16
+    davinci forensics = 2024-08-13T07:15:00
+    cisco = 2024-08-15T12:00:01
+    information security magazine = 2024-08-16T14:00:00
+    google = 2022-10-12T12:00:00
+    trend micro = 2024-08-15T00:00:00
+    bleeping computer = 2024-08-16T22:30:07
+    proof point = 2024-08-06T12:54:19
+    us-cert cisa = 2024-08-12T17:38:58
+    fr-cert alertes = 2024-08-09T14:35:34
+    fr-cert avis = 2024-08-16T11:47:34
+    hacker news = 2024-08-17T06:38:00
+    schneier on security = 2024-08-16T21:06:32
+    ncsc = 7630-11-11T08:01:15
+    center of internet security = 2024-08-13T23:48:03
+    binary defense = 2024-08-07T14:00:00
+    securelist = 2024-08-15T12:00:20
+    checkpoint research = 2024-08-16T15:59:31
+    virusbulletin = 2024-06-24T08:57:00
+    modexp = 2024-07-21T22:06:03
+    james forshaw = 2024-06-04T04:20:00
+    adam chester = 2024-03-18T23:01:46
+    microsoft security = 2024-08-07T07:00:00
+    recorded future = 2024-08-15T00:00:00
+    sentinelone = 2024-08-16T13:00:55
+    leak-lookup = 2024-08-16T11:00:02
+    cyber-news = 2023-10-22T17:07:23
+    eu-enisa publications = 2024-06-29T06:30:00
+    att = 2024-08-14T10:00:00
+    microsoft sentinel = 2024-08-16T16:37:16
+    ncc = 2024-02-22T16:35:43
+    sans = 2024-08-16T02:00:02
+    version = 2023-05-15T09:31:25
+    redcanary = 2024-08-05T22:07:16
+    malpedia = 2022-09-20T15:01:28
+    databreaches = 2022-10-10T11:40:57
+    unit42 = 2024-08-15T10:00:09
+    google tag = 2024-08-14T19:00:00
+    msrc security update = 2024-08-14T07:00:00
+
+    [Ransomware]
+    suncrypt = 2022-06-18 02:21:01.442528
+    lockbit2 = 2022-08-06 20:48:04.576723
+    arvinclub = 2023-10-15 22:03:19.232635
+    quantum = 2023-06-24 19:29:37.563286
+    alphv = 2024-03-03 16:14:30.091307
+    lorenz = 2023-12-11 17:39:57.571043
+    avoslocker = 2023-02-11 15:54:59.279192
+    avaddon = 2021-09-09 23:46:54.365433
+    xinglocker = 2021-10-26 13:56:17.766530
+    ragnarlocker = 2023-10-11 22:11:03.350260
+    clop = 2024-10-25 07:02:17.508970
+    revil = 2022-11-28 20:34:41.644515
+    everest = 2024-11-15 19:05:10.461659
+    ragnarok = 2021-12-30 10:10:45.033137
+    conti = 2022-06-07 18:40:06.936435
+    pysa = 2022-09-20 01:44:05.209440
+    nefilim = 2021-09-09 23:46:57.082905
+    mountlocker = 2022-02-08 14:26:33.620994
+    babuklocker = 2021-09-09 23:46:57.346780
+    ransomexx = 2024-09-14 15:03:19.884463
+    cuba = 2024-02-01 16:34:09.685614
+    pay2key = 2021-09-09 23:46:57.658522
+    azroteam = 2021-09-09 23:46:57.808630
+    lockdata = 2021-09-09 23:46:57.869876
+    blacktor = 2021-12-30 10:10:48.121036
+    darkleakmarket = 2022-05-25 18:38:22.481043
+    blackmatter = 2021-11-04 16:05:45.602653
+    payloadbin = 2022-01-06 13:27:28.356983
+    groove = 2021-10-30 10:25:18.268983
+    bonacigroup = 2021-12-06 23:55:58.986303
+    blackbyte = 2024-09-30 17:29:23.253995
+    karma = 2021-10-04 09:45:12.384002
+    spook = 2021-10-19 18:49:19.466913
+    lv = 2022-11-27 14:03:27.280258
+    sabbath = 2022-02-28 18:25:03.577007
+    snatch = 2024-05-16 14:16:40.764921
+    midas = 2022-04-14 23:25:05.809224
+    robinhood = 2021-12-06 19:59:27.781350
+    marketo = 2022-02-14 20:32:48.096765
+    rook = 2022-01-08 10:19:00.640637
+    cryp70n1c0d3 = 2021-12-18 16:06:44.345558
+    hiveleak = 2022-12-10 13:48:33.387761
+    blackshadow = 2021-12-18 16:06:44.948812
+    mosesstaff = 2021-12-18 16:06:45.338411
+    atomsilo = 2021-12-21 20:28:18.355635
+    nightsky = 2022-01-04 19:14:52.100985
+    vicesociety = 2023-06-20 21:06:18.878351
+    pandora = 2022-03-30 19:26:24.820390
+    stormous = 2024-11-03 05:49:10.192058
+    leaktheanalyst = 2022-03-29 16:52:32.802514
+    kelvinsecurity = 2022-05-24 20:35:19.562212
+    blackbasta = 2024-10-29 19:17:35.564909
+    onyx = 2022-11-21 14:16:29.181128
+    mindware = 2022-05-05 13:42:39.179439
+    ransomhouse = 2024-11-13 16:52:17.547836
+    cheers = 2022-09-14 11:00:11.961979
+    lockbit3 = 2024-11-01 18:10:05.460524
+    yanluowang = 2022-08-10 16:55:19.472715
+    0mega = 2024-01-25 17:30:38.223909
+    bianlian = 2024-11-10 00:09:37.215121
+    redalert = 2022-09-22 11:21:46.892926
+    redcanary = 2022-08-18T21:53:55
+    daixin = 2024-07-22 14:41:19.728157
+    babuk = 2023-07-31 14:37:35.575413
+    icefire = 2022-08-20 09:50:02.102837
+    donutleaks = 2024-10-26 02:32:48.267840
+    sparta = 2022-09-22 17:47:19.862890
+    qilin = 2024-11-05 18:45:56.015105
+    shaoleaks = 2022-11-01 17:07:34.876018
+    mallox = 2024-07-15 17:40:33.142016
+    royal = 2023-07-19 14:46:59.790838
+    projectrelic = 2022-12-18 16:54:36.306758
+    medusa = 2024-11-14 07:38:54.312097
+    play = 2024-11-07 00:19:37.880422
+    dataleak = 2022-12-02 09:45:25.796276
+    monti = 2024-10-21 21:11:57.879931
+    nokoyawa = 2023-08-04 11:02:13.553376
+    hive = 2023-01-16 23:15:55.695146
+    karakurt = 2023-09-22 14:30:43.020500
+    unsafe = 2024-01-14 23:22:23.272853
+    freecivilian = 2022-12-31 16:06:42.927121
+    vendetta = 2023-02-27 11:35:59.876255
+    medusalocker = 2024-05-09 02:41:13.096833
+    v = 2022-11-15 07:39:16.214881
+    memedusalockerdusa = 2022-11-15 07:39:16.366613
+    darkpower = 2023-03-11 14:03:02.165601
+    abyss = 2024-10-29 17:18:26.956385
+    moneymessage = 2024-06-19 11:44:43.899838
+    dunghill_leak = 2023-09-26 23:36:18.432786
+    crosslock = 2023-04-17 17:00:38.913300
+    trigona = 2024-03-30 17:55:35.466923
+    cryptnet = 2023-04-19 20:00:01.214643
+    akira = 2024-11-14 22:44:27.869389
+    rancoz = 2023-09-03 19:11:12.464264
+    ragroup = 2023-12-20 16:20:10.147940
+    malas = 2023-05-18 11:29:55.649054
+    8base = 2024-10-09 20:47:56.766314
+    darkrace = 2023-06-09 10:53:33.531706
+    medusaiocker = 2023-06-03 08:56:09.829572
+    rhysida = 2024-11-09 10:50:36.416814
+    la_piovra = 2023-06-10 16:58:28.721400
+    blacksuit = 2024-11-15 21:13:46.573360
+    noescape = 2023-12-04 08:56:33.596157
+    cyclops = 2023-07-26 21:01:35.861410
+    cactus = 2024-11-08 08:33:42.562299
+    knight = 2024-02-12 19:38:42.717010
+    incransom = 2024-11-15 17:20:54.467398
+    metaencryptor = 2024-08-23 06:49:28.454753
+    ransomed = 2023-10-30 11:25:30.602317
+    cloak = 2024-10-22 19:51:07.065858
+    cyphbit = 2023-09-16 17:33:53.301161
+    threeam = 2024-11-13 11:52:33.763352
+    cryptbb = 2023-09-15 22:33:41.705485
+    ciphbit = 2024-11-13 16:46:11.048620
+    losttrust = 2023-09-26 11:10:43.854110
+    hunter = 2023-10-21 11:31:14.742711
+    hunters = 2024-11-15 19:09:40.598242
+    meow = 2024-11-14 20:12:50.149470
+    dunghill = 2024-07-15 23:46:02.294893
+    siegedsec = 2023-12-09 01:15:09.503027
+    dragonforce = 2024-11-05 08:49:11.719515
+    raznatovic = 2024-01-07 13:15:39.549453
+    toufan = 2023-12-27 03:17:16.475919
+    werewolves = 2024-03-13 01:20:14.630060
+    ranstreet = 2023-12-21 00:08:22.617850
+    malekteam = 2024-08-08 12:44:18.222083
+    noname = 2024-01-16 20:58:52.036534
+    insame = 2024-01-17 05:45:04.181045
+    insane = 2024-01-17 05:45:04.181045
+    slug = 2024-01-18 11:01:53.512839
+    mydata = 2024-02-14 14:53:11.629905
+    ransomhub = 2024-11-15 19:23:23.522605
+    trisec = 2024-03-12 18:12:46.345750
+    mogilevich = 2024-03-02 16:26:21.304079
+    alphalocker = 2024-08-09 21:58:22.255018
+    blackout = 2024-09-29 14:23:32.536590
+    donex = 2024-03-08 06:49:44.007152
+    raworld = 2024-11-12 20:16:06.020507
+    kill = 2024-03-21 18:31:57.467178
+    killsec = 2024-11-15 00:40:22.989315
+    redransomware = 2024-06-12 07:10:17.299520
+    darkvault = 2024-11-07 18:12:57.247270
+    gookie = 2024-04-19 08:15:03.442959
+    disposseor = 2024-04-19 09:35:31.467821
+    dispossessor = 2024-08-11 21:55:50.282146
+    embargo = 2024-11-13 00:34:43.166271
+    qiulong = 2024-06-24 22:23:31.002955
+    hellogookie = 2024-04-19 08:15:03.442959
+    eraleig = 2024-04-29 06:08:57.341674
+    dan0n = 2024-08-23 08:44:30.811978
+    spacebears = 2024-11-09 04:44:51.808860
+    apt73 = 2024-11-13 11:40:35.365746
+    apos = 2024-10-27 19:22:18.189288
+    underground = 2024-10-25 13:23:10.927257
+    flocker = 2024-11-05 02:53:26.720927
+    zerotolerance = 2024-05-09 19:12:58.125215
+    arcusmedia = 2024-10-29 17:19:12.819566
+    handala = 2024-11-03 15:20:29.353215
+    sensayq = 2024-07-01 19:44:03.668024
+    eldorado = 2024-10-28 18:23:55.479117
+    trinity = 2024-10-03 19:04:39.274450
+    cicada3301 = 2024-10-25 02:10:07.214471
+    braincipher = 2024-11-13 16:40:55.145591
+    vanirgroup = 2024-07-10 13:54:52.476485
+    ransomcortex = 2024-07-12 17:37:07.641220
+    fog = 2024-11-15 19:06:14.135319
+    madliberator = 2024-10-01 16:12:05.863123
+    lynx = 2024-11-14 21:35:25.936449
+    helldown = 2024-11-06 23:40:11.858876
+    cryptolocker = 2019-04-28 00:00:00.000000
+    cryptowall = 2016-06-05 00:00:00.000000
+    cryptoware = 2015-01-01 00:00:00.000000
+    goznym = 2015-01-01 00:00:00.000000
+    megacode = 2015-03-20 00:00:00.000000
+    keyholder = 2015-04-04 00:00:00.000000
+    teslacrypt = 2016-03-09 00:00:00.000000
+    lechiffre = 2016-03-01 00:00:00.000000
+    locky = 2016-12-12 00:00:00.000000
+    samsam = 2018-09-28 00:00:00.000000
+    scarab = 2018-06-01 00:00:00.000000
+    hddcryptor = 2016-11-25 00:00:00.000000
+    dharma = 2020-06-01 00:00:00.000000
+    cerber = 2017-01-09 00:00:00.000000
+    cryptomix = 2017-01-15 00:00:00.000000
+    wannacry = 2018-02-23 00:00:00.000000
+    erebus = 2017-06-10 00:00:00.000000
+    bitpaymer = 2019-11-10 00:00:00.000000
+    global 3 = 2017-01-01 00:00:00.000000
+    samas = 2018-02-16 00:00:00.000000
+    triplem = 2018-03-30 00:00:00.000000
+    hermes = 2018-07-27 00:00:00.000000
+    gandcrab = 2018-09-09 00:00:00.000000
+    ryuk = 2021-05-18 00:00:00.000000
+    pewcrypt = 2018-11-01 00:00:00.000000
+    nozelesn = 2018-12-17 00:00:00.000000
+    lockergoga = 2019-03-22 00:00:00.000000
+    robbinhood = 2019-05-07 00:00:00.000000
+    doppelpaymer = 2021-04-10 00:00:00.000000
+    maze = 2020-09-11 00:00:00.000000
+    netwalker = 2020-12-12 00:00:00.000000
+    prolock/pwndlocker = 2020-04-25 00:00:00.000000
+    coldlock = 2020-05-05 00:00:00.000000
+    snake = 2020-06-07 00:00:00.000000
+    mamba = 2020-05-07 00:00:00.000000
+    sekhmet = 2020-06-20 00:00:00.000000
+    thanos = 2020-07-01 00:00:00.000000
+    wastedlocker = 2020-10-16 00:00:00.000000
+    darkside = 2021-05-13 00:00:00.000000
+    agelocker = 2020-08-30 00:00:00.000000
+    egregor = 2021-02-08 00:00:00.000000
+    lockbit = 2023-03-06 00:00:00.000000
+    netflim = 2020-11-01 00:00:00.000000
+    hades = 2020-12-15 00:00:00.000000
+    cring = 2021-01-01 00:00:00.000000
+    ronggolawe/awesomeware = 2021-02-01 00:00:00.000000
+    mount locker = 2021-02-07 00:00:00.000000
+    phoenix cryptolocker = 2021-03-21 00:00:00.000000
+    synack = 2021-03-21 00:00:00.000000
+    astro team = 2021-04-05 00:00:00.000000
+    maui = 2021-05-01 00:00:00.000000
+    networm = 2021-05-02 00:00:00.000000
+    zeppelin = 2021-05-19 00:00:00.000000
+    grief = 2021-09-15 00:00:00.000000
+    deathkitty = 2021-07-22 00:00:00.000000
+    black shadow = 2021-10-13 00:00:00.000000
+    macaw = 2021-10-16 00:00:00.000000
+    deepbluemagin = 2021-10-16 00:00:00.000000
+    lapsus$ = 2022-03-07 00:00:00.000000
+    bitlocker = 2022-05-02 00:00:00.000000
+    black basta = 2022-11-04 00:00:00.000000
+    daixin team = 2022-11-11 00:00:00.000000
+    roadsweep = 2022-07-18 00:00:00.000000
+    lv ransomware = 2022-08-03 00:00:00.000000
+    prestige = 2022-10-11 00:00:00.000000
+    blogxx = 2022-10-12 00:00:00.000000
+    darkbit = 2023-02-12 00:00:00.000000
+    global3 = 2017-09-09 00:00:00.000000
+    prolock = 2020-04-25 00:00:00.000000
+    ronggolawe = 2021-02-01 00:00:00.000000
+    phoenixcryptolocker = 2021-03-21 00:00:00.000000
+    astroteam = 2021-04-05 00:00:00.000000
+    valencialeaks = 2024-09-18 09:47:16.136675
+    orca = 2024-10-04 10:42:22.251045
+    nitrogen = 2024-10-25 16:08:39.957879
+    sarcoma = 2024-11-14 11:28:41.669208
+    interlock = 2024-11-07 11:14:06.006864
+    hellcat = 2024-11-04 15:24:23.979333
+    playboy = 2024-10-30 19:16:00.461633
+    kairos = 2024-11-13 09:18:47.290903
+
+    [Misc]
+    redflagdomains = 2024-11-15
+    reminder = 2024-11-07
+secrets:
+  MSTEAMS_WEBHOOK_FEED: AgAhKXbNH/zcJ64PwiCqRPvKoPfQdx+tBrPALgaJrhbr6j2BUlT1PW7qKUWAmrCzMUmoSktWYGFe2HUlPTLoHEj/6DBeNbMHTkfJLrNKXJjReqgEin+QPvFSOQMr+wn6KtMMAssK3gpDCGQi7PSXUiNHNFjRN0GIMOzuf9Vk4FlNQVHyf3tYdak0YHlXmssfWPMz8UzttCASu9fLJhVKQwrReHGhoV2OP5/m6Vx4zOOGol6iiZvbUF9sDNm3Dpr0O0kOFxMvELASKhRWFHONJ//bqYg3WRhQaymf0u8l5ZYC+mUev5tFH9SRkebNl8W/meZOvUeh2X8UYVDVx6CbBPI/2bhC9jNyp+aUxYTVyUUkca3QLbQNLW0RhuXCYq+PhiqFpImngu2E9kLF2BAp0uou2xz3e3dkFLEuG4hK0tF81thx5gWI1iFrPLXQ8JVPBkbBjIxDqWqCXrAPGVd/9ul+KhNpxiDOh6geoaP3yTSs5XPUNTAMKIEtdfzO++2yjWUqWJxw6BELPgyilgtRrBVnou1xJ1QtH0j606sxi52V1eLygbaad3xzPpEKolW5/dsKA/uX4oh5LzjbM9KmWwjvZpMLvaOvR3naHiUFwiVrlwJLsuFrWy0SwISj+HXstJKTIPpF+ueG0nYv9FSj4BKWy1if4Y9XEc+chV3sU9lR6bb0WS/tc5snLXRskU+KylU0ManyKoR8eBb3P1D5sHx1MXEWDw6demS46gaYNwz4gSkHp+NEnxFSqqF8+THfSzz1V5cyxzbRgQnkJU49pXqAziDakgXdOGQzjbnXP4EHVTWWxnE4i75M2Ez39cAb5Ojp8Oo4SWOL0EDXes/Wz/Hn4t7QrsDs1GHS4Z5dgPoImoyn06+9Xp9LS1ycWrGX9e2HPQcyFdSiNCrXbS8Jmw+0JG4w1BZetr56td4Wz8sLqx6ecjf9EhDUJxox4Hgsv8xvyXTzyICdtWm+3iKp2So6/aJXQIBfdO2UvtPCtUnnyFdKux60aKgcaAYGZL+Yz/jGgU1tum+dJICNlhAN
+  MSTEAMS_WEBHOOK_RANSOMWARE: AgAhKXbNH/zcJ64PwiCqRPvKoPfQdx+tBrPALgaJrhbr6j2BUlT1PW7qKUWAmrCzMUmoSktWYGFe2HUlPTLoHEj/6DBeNbMHTkfJLrNKXJjReqgEin+QPvFSOQMr+wn6KtMMAssK3gpDCGQi7PSXUiNHNFjRN0GIMOzuf9Vk4FlNQVHyf3tYdak0YHlXmssfWPMz8UzttCASu9fLJhVKQwrReHGhoV2OP5/m6Vx4zOOGol6iiZvbUF9sDNm3Dpr0O0kOFxMvELASKhRWFHONJ//bqYg3WRhQaymf0u8l5ZYC+mUev5tFH9SRkebNl8W/meZOvUeh2X8UYVDVx6CbBPI/2bhC9jNyp+aUxYTVyUUkca3QLbQNLW0RhuXCYq+PhiqFpImngu2E9kLF2BAp0uou2xz3e3dkFLEuG4hK0tF81thx5gWI1iFrPLXQ8JVPBkbBjIxDqWqCXrAPGVd/9ul+KhNpxiDOh6geoaP3yTSs5XPUNTAMKIEtdfzO++2yjWUqWJxw6BELPgyilgtRrBVnou1xJ1QtH0j606sxi52V1eLygbaad3xzPpEKolW5/dsKA/uX4oh5LzjbM9KmWwjvZpMLvaOvR3naHiUFwiVrlwJLsuFrWy0SwISj+HXstJKTIPpF+ueG0nYv9FSj4BKWy1if4Y9XEc+chV3sU9lR6bb0WS/tc5snLXRskU+KylU0ManyKoR8eBb3P1D5sHx1MXEWDw6demS46gaYNwz4gSkHp+NEnxFSqqF8+THfSzz1V5cyxzbRgQnkJU49pXqAziDakgXdOGQzjbnXP4EHVTWWxnE4i75M2Ez39cAb5Ojp8Oo4SWOL0EDXes/Wz/Hn4t7QrsDs1GHS4Z5dgPoImoyn06+9Xp9LS1ycWrGX9e2HPQcyFdSiNCrXbS8Jmw+0JG4w1BZetr56td4Wz8sLqx6ecjf9EhDUJxox4Hgsv8xvyXTzyICdtWm+3iKp2So6/aJXQIBfdO2UvtPCtUnnyFdKux60aKgcaAYGZL+Yz/jGgU1tum+dJICNlhAN
+  MSTEAMS_WEBHOOK_IOC: AgAhKXbNH/zcJ64PwiCqRPvKoPfQdx+tBrPALgaJrhbr6j2BUlT1PW7qKUWAmrCzMUmoSktWYGFe2HUlPTLoHEj/6DBeNbMHTkfJLrNKXJjReqgEin+QPvFSOQMr+wn6KtMMAssK3gpDCGQi7PSXUiNHNFjRN0GIMOzuf9Vk4FlNQVHyf3tYdak0YHlXmssfWPMz8UzttCASu9fLJhVKQwrReHGhoV2OP5/m6Vx4zOOGol6iiZvbUF9sDNm3Dpr0O0kOFxMvELASKhRWFHONJ//bqYg3WRhQaymf0u8l5ZYC+mUev5tFH9SRkebNl8W/meZOvUeh2X8UYVDVx6CbBPI/2bhC9jNyp+aUxYTVyUUkca3QLbQNLW0RhuXCYq+PhiqFpImngu2E9kLF2BAp0uou2xz3e3dkFLEuG4hK0tF81thx5gWI1iFrPLXQ8JVPBkbBjIxDqWqCXrAPGVd/9ul+KhNpxiDOh6geoaP3yTSs5XPUNTAMKIEtdfzO++2yjWUqWJxw6BELPgyilgtRrBVnou1xJ1QtH0j606sxi52V1eLygbaad3xzPpEKolW5/dsKA/uX4oh5LzjbM9KmWwjvZpMLvaOvR3naHiUFwiVrlwJLsuFrWy0SwISj+HXstJKTIPpF+ueG0nYv9FSj4BKWy1if4Y9XEc+chV3sU9lR6bb0WS/tc5snLXRskU+KylU0ManyKoR8eBb3P1D5sHx1MXEWDw6demS46gaYNwz4gSkHp+NEnxFSqqF8+THfSzz1V5cyxzbRgQnkJU49pXqAziDakgXdOGQzjbnXP4EHVTWWxnE4i75M2Ez39cAb5Ojp8Oo4SWOL0EDXes/Wz/Hn4t7QrsDs1GHS4Z5dgPoImoyn06+9Xp9LS1ycWrGX9e2HPQcyFdSiNCrXbS8Jmw+0JG4w1BZetr56td4Wz8sLqx6ecjf9EhDUJxox4Hgsv8xvyXTzyICdtWm+3iKp2So6/aJXQIBfdO2UvtPCtUnnyFdKux60aKgcaAYGZL+Yz/jGgU1tum+dJICNlhAN
