@@ -424,11 +424,11 @@ if __name__ == '__main__':
         reader = csv.reader(f)
         RssFeedList = list(reader)
             
-    #for RssItem in RssFeedList:
-    #    if '#' in str(RssItem[0]):
-    #        continue
-    #    GetRssFromUrl(RssItem)
-    #    CreateLogString(RssItem[1])
+    for RssItem in RssFeedList:
+       if '#' in str(RssItem[0]):
+           continue
+       GetRssFromUrl(RssItem)
+       CreateLogString(RssItem[1])
 
     GetRansomwareUpdates()
     CreateLogString("Ransomware List")
