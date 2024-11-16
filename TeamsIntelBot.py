@@ -342,9 +342,6 @@ def SendReminder():
         OutputMessage += "<br>"
         OutputMessage += "🏴‍☠️ 🔒 Ransomware Leaks"
         OutputMessage += "<br><br>"
-        OutputMessage += "Coded with ❤️ by JMousqueton"
-        OutputMessage += "<BR>"
-        OutputMessage += "Code : https://github.com/JMousqueton/CTI-MSTeams-Bot"
         today = today.strftime(format)
         FileConfig.set('Misc', "reminder", str(today))
         if options.Debug:
@@ -398,9 +395,10 @@ if __name__ == '__main__':
     webhook_feed=os.getenv('MSTEAMS_WEBHOOK_FEED')
     webhook_ransomware=os.getenv('MSTEAMS_WEBHOOK_RANSOMWARE')
     webhook_ioc=os.getenv('MSTEAMS_WEBHOOK_IOC')
+    configuration_file_directory=os.getenv('CONFIG_FILE_PATH', os.path.split(os.path.abspath(__file__))[0])
 
     # expects the configuration file in the same directory as this script by default, replace if desired otherwise
-    ConfigurationFilePath = os.path.join(os.path.split(os.path.abspath(__file__))[0], 'Config.txt')
+    ConfigurationFilePath = os.path.join(configuration_file_directory, 'Config.txt')
 
     # Make some simple checks before starting 
     if sys.version_info < (3, 10):
